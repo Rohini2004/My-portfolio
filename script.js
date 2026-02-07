@@ -108,7 +108,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const match = bg && bg.match(/url\(["']?(.*?)["']?\)/);
                 if (match) src = match[1];
             }
-            if (src) openLightbox(src, el.getAttribute('aria-label') || 'Poster full view');
+            if (src) {
+                // encode spaces and special characters for GitHub Pages URLs
+                try {
+                    src = encodeURI(src.trim());
+                } catch (err) {
+                    console.warn('Failed to encode poster src', src, err);
+                }
+                // quick check: log the final URL for troubleshooting on GitHub
+                console.info('Opening poster:', src);
+                openLightbox(src, el.getAttribute('aria-label') || 'Poster full view');
+            }
         });
     });
 
