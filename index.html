@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rohini Khan - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header / Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">ROHINI KHAN</div>
+            <nav class="navbar">
+                <a href="#home" class="nav-link">HOME</a>
+                <a href="#about" class="nav-link">ABOUT ME</a>
+                <a href="myworks.html" class="nav-link">MY WORKS</a>
+            </nav>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="hero-image">
+                <img src="WhatsApp Image 2026-01-22 at 11.03.36 AM.jpeg" alt="Rohini Khan">
+            </div>
+            <div class="hero-text">
+                <h1>Hello! I am Rohini Khan</h1>
+                <p class="subtitle">A Front-end Developer and a UI/UX researcher</p>
+                <a href="#about" class="cta-btn">Learn More About Me </a>
+            </div>
+        </div>
+        <svg class="wave" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <path d="M0,50 Q300,0 600,50 T1200,50 L1200,120 L0,120 Z" fill="#f5f5f5"></path>
+        </svg>
+    </section>
+
+    <!-- My Works Section -->
+    <section id="works" class="my-works">
+        <div class="container">
+            <h2>MY WORKS</h2>
+            <div class="works-grid">
+                <div class="work-card posters-card" onclick="window.location.href='myworks.html'">
+                    <div class="work-image posters" style="background-image: url('bowribbon.jpg');"></div>
+                    <h3>POSTERS</h3>
+                </div>
+                <div class="work-card" onclick="window.location.href='myworks.html#magazines'">
+                    <div class="work-image web-designs" style="background-image: url('butterfly.jpg');"></div>
+                    <h3>MAGAZINES</h3>
+                </div>
+                <div class="work-card" onclick="window.location.href='myworks.html#designs'">
+                    <div class="work-image designs" style="background-image: url('stawberry.jpg');"></div>
+                    <h3>DESIGNS</h3>
+                </div>
+                <div class="work-card">
+                    <div class="work-image others" style="background-image: url('love.jpg');"></div>
+                    <h3>OTHERS </h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section (Moved after My Works) -->
+    <section id="about" class="about-redesigned">
+        <div class="container">
+            <div class="about-wrapper">
+                <!-- Left Side: Bio -->
+                <div class="about-content">
+                    <h2>About Me</h2>
+                    <p>Hi, I am Rohini Khan—a curious UI/UX researcher and designer, a third-year B.Tech student, and an AI enthusiast who enjoys crafting thoughtful digital experiences. I love exploring the intersection of human-centered design and technology, where ideas evolve into intuitive and impactful interfaces.</p>
+                    <p>I am a PwC Women Leadership Development Program (WLDP) trainee, and I strongly believe in a disciplined lifestyle—one that fuels consistency, focus, and long-term growth. To me, great design mirrors discipline: structured, intentional, and continuously refined.</p>
+                    <p>I have contributed as a Graphic Designer for initiatives like Driveblaze and the Google Gemini Student Community, and I enjoy experimenting with tools such as <a href="https://www.figma.com/" target="_blank" class="skill-link figma-link">Figma</a>, Canva, and Wix to bring ideas to life. I am proficient in <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="skill-link html-link">HTML5</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" class="skill-link css-link">CSS3</a>, and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="skill-link js-link">JavaScript</a> for front-end development, and I specialize in <a href="https://www.nngroup.com/articles/definition-user-experience-ux/" target="_blank" class="skill-link ux-link">UI/UX Design</a>. I also work with <a href="https://react.dev/" target="_blank" class="skill-link react-link">React</a> to build modern, responsive web applications.</p>
+                    <p>When I am not designing or coding, I am learning, improving, and quietly building meaningful solutions that make a difference.</p>
+                </div>
+                <!-- Right Side: Photo -->
+                <div class="about-photo">
+                    <div class="photo-container">
+                        <img src="WhatsApp Image 2026-01-22 at 10.49.39 AM.jpeg" alt="Rohini Khan" class="about-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>MY PROJECTS</h2>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>DOG WALKER RESPONSIVE FRONT-END WEB APP</h3>
+                    <p>A responsive web application designed to connect dog walkers with pet owners. Built with modern front-end technologies and user-centric design principles.</p>
+                    <a href="https://rohini2004.github.io/Dog-Walking/" target="_blank" class="project-link">View Project </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Travel Fun</h3>
+                    <p>A responsive web application designed to find your favourite place for the coming holidays. Built with modern front-end technologies and user-centric design principles.</p>
+                    <a href="https://rohini2004.github.io/Travel_Fun.html/" target="_blank" class="project-link">View Project </a>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>More Projects Coming Soon</h3>
+                    <p>Stay tuned for more exciting projects showcasing my skills in front-end development and UI/UX design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Rohini Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
