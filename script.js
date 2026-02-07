@@ -5,24 +5,28 @@
 const hamburger = document.querySelector('.hamburger');
 const navbar = document.querySelector('.navbar');
 
-hamburger.addEventListener('click', () => {
-    navbar.classList.toggle('active');
-});
-
-// Close menu when a link is clicked
-const navLinks = document.querySelectorAll('.nav-link');
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navbar.classList.remove('active');
+if (hamburger && navbar) {
+    hamburger.addEventListener('click', () => {
+        navbar.classList.toggle('active');
     });
-});
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.header')) {
-        navbar.classList.remove('active');
+    // Close menu when a link is clicked
+    const navLinks = document.querySelectorAll('.nav-link');
+    if (navLinks && navLinks.length) {
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navbar.classList.remove('active');
+            });
+        });
     }
-});
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.header')) {
+            navbar.classList.remove('active');
+        }
+    });
+}
 
 // Smooth scroll for internal links
 navLinks.forEach(link => {
