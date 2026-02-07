@@ -137,3 +137,144 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// =====================
+// AI Chatbot Widget
+// =====================
+
+document.addEventListener('DOMContentLoaded', () => {
+    const chatbotToggle = document.getElementById('chatbot-toggle');
+    const chatbotWidget = document.getElementById('chatbot');
+    const chatInput = document.querySelector('.chatbot-input');
+    const chatSend = document.querySelector('.chatbot-send');
+    const chatMessages = document.querySelector('.chatbot-messages');
+    const chatMinimize = document.querySelector('.chatbot-minimize');
+
+    let isOpen = false;
+
+    // Toggle chatbot open/close
+    chatbotToggle.addEventListener('click', () => {
+        isOpen = !isOpen;
+        chatbotWidget.classList.toggle('open', isOpen);
+        chatbotToggle.classList.toggle('open', isOpen);
+        if (isOpen) {
+            chatInput.focus();
+            // Show welcome message on first open
+            if (chatMessages.children.length === 0) {
+                addMessage('Hello! 👋 I\'m here to help you learn more about Rohini\'s portfolio and design work. Ask me anything!', 'assistant');
+            }
+        }
+    });
+
+    // Minimize button
+    chatMinimize.addEventListener('click', () => {
+        isOpen = false;
+        chatbotWidget.classList.remove('open');
+        chatbotToggle.classList.remove('open');
+    });
+
+    // Add message to chat
+    function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = `chat-message ${sender}`;
+        const bubble = document.createElement('div');
+        bubble.className = 'chat-bubble';
+        bubble.textContent = text;
+        messageDiv.appendChild(bubble);
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Show typing indicator
+    function showTyping() {
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'chat-message assistant';
+        messageDiv.id = 'typing-indicator';
+        messageDiv.innerHTML = '<div class="chat-bubble"><div class="chat-loading"><span></span><span></span><span></span></div></div>';
+        chatMessages.appendChild(messageDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    // Remove typing indicator
+    function removeTyping() {
+        const indicator = document.getElementById('typing-indicator');
+        if (indicator) indicator.remove();
+    }
+
+    // Get AI response (using a simple approach with built-in knowledge)
+    async function getAIResponse(userMessage) {
+        const msg = userMessage.toLowerCase();
+
+        // Context about Rohini's portfolio
+        const portfolioContext = {
+            skills: ['HTML5', 'CSS3', 'JavaScript', 'React', 'Figma', 'UI/UX Design', 'Canva', 'Wix'],
+            projects: ['Dog Walker Responsive Front-End Web App', 'Travel Fun', 'Portfolio Website'],
+            roles: ['Front-end Developer', 'UI/UX Researcher', 'Graphic Designer', 'B.Tech Student'],
+            experience: ['PwC Women Leadership Development Program', 'Driveblaze', 'Google Gemini Student Community'],
+            designs: ['Posters', 'Magazines', 'UI/UX designs']
+        };
+
+        // Simple keyword matching for common questions
+        if (msg.includes('skills') || msg.includes('what can')) {
+            return `Rohini specializes in: ${portfolioContext.skills.join(', ')}. She loves combining design with development to create amazing user experiences! 🎨✨`;
+        }
+        if (msg.includes('project') || msg.includes('work')) {
+            return `Rohini has worked on several projects including: ${portfolioContext.projects.join(', ')}. Check out the "MY WORKS" section to see her latest creations! 🚀`;
+        }
+        if (msg.includes('experience') || msg.includes('background')) {
+            return `Rohini is a third-year B.Tech student with diverse experience including PwC WLDP, Driveblaze, and Google Gemini Community roles. She's a passionate designer and developer! 👩‍💻`;
+        }
+        if (msg.includes('design') || msg.includes('poster') || msg.includes('magazine')) {
+            return `Rohini creates beautiful designs across posters, magazines, and UI/UX. Her work combines creativity with technical precision. Visit the posters section to see her amazing designs! 🎨`;
+        }
+        if (msg.includes('frontend') || msg.includes('frontend') || msg.includes('react') || msg.includes('javascript')) {
+            return `Yes! Rohini is proficient in HTML5, CSS3, JavaScript and React. She builds responsive, user-centric web applications that are both beautiful and functional! 💻`;
+        }
+        if (msg.includes('ux') || msg.includes('ui') || msg.includes('research')) {
+            return `Rohini is passionate about UI/UX Research and Design! She believes great design mirrors discipline: structured, intentional, and continuously refined. Human-centered design is her focus! 🎯`;
+        }
+        if (msg.includes('contact') || msg.includes('email') || msg.includes('reach')) {
+            return `You can find more about connecting with Rohini through the portfolio page. Check the footer for social links or scroll to the About section! 📧`;
+        }
+        if (msg.includes('portfolio') || msg.includes('website')) {
+            return `Welcome to Rohini's portfolio! Here you can explore her design work, projects, skills, and background. Feel free to browse the sections and click on any poster to view it in fullscreen! 🌟`;
+        }
+        if (msg.includes('hi') || msg.includes('hello') || msg.includes('hey')) {
+            return `Hey there! 👋 I'm Rohini's AI assistant. I'm here to help you navigate the portfolio and answer questions about her work, skills, and projects. What would you like to know? 😊`;
+        }
+
+        // Default response for general questions
+        return `That's an interesting question! While I'm specifically trained on Rohini's portfolio, I can tell you she's a talented UI/UX researcher, front-end developer, and graphic designer. Feel free to explore the website to learn more, or ask me specifically about her skills, projects, or experience! 🤖✨`;
+    }
+
+    // Send message
+    async function sendMessage() {
+        const userMessage = chatInput.value.trim();
+        if (!userMessage) return;
+
+        // Add user message
+        addMessage(userMessage, 'user');
+        chatInput.value = '';
+
+        // Show typing indicator
+        showTyping();
+
+        // Simulate slight delay for natural feel
+        setTimeout(async () => {
+            removeTyping();
+            const response = await getAIResponse(userMessage);
+            addMessage(response, 'assistant');
+        }, 600);
+    }
+
+    // Send button click
+    chatSend.addEventListener('click', sendMessage);
+
+    // Enter key to send
+    chatInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            sendMessage();
+        }
+    });
+});
