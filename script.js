@@ -4,6 +4,7 @@
 
 const hamburger = document.querySelector('.hamburger');
 const navbar = document.querySelector('.navbar');
+const navLinks = document.querySelectorAll('.nav-link');
 
 if (hamburger && navbar) {
     hamburger.addEventListener('click', () => {
@@ -11,7 +12,6 @@ if (hamburger && navbar) {
     });
 
     // Close menu when a link is clicked
-    const navLinks = document.querySelectorAll('.nav-link');
     if (navLinks && navLinks.length) {
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
@@ -153,6 +153,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const chatSend = document.querySelector('.chatbot-send');
     const chatMessages = document.querySelector('.chatbot-messages');
     const chatMinimize = document.querySelector('.chatbot-minimize');
+
+    if (!chatbotToggle || !chatbotWidget || !chatInput || !chatSend || !chatMessages || !chatMinimize) {
+        console.warn('Chatbot elements missing — chatbot will not initialize on this page.');
+        return;
+    }
 
     let isOpen = false;
 
